@@ -1,0 +1,76 @@
+
+<div class="bg-gray-800 text-white p-10 w-100 rounded-lg">
+    <h1 class="text-3xl font-bold mb-6">Add Contact Details</h1>
+    <h3 class="text-2xl font-bold mb-6">Add Image</h3>
+    <div class="relative w-10 h-10 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
+      <svg class="absolute w-12 h-12 text-gray-400 -left-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg>
+  </div>
+  <br>
+    <form [formGroup]="form">
+      <h3 class="text-2xl font-bold mb-6">Basic Details</h3>
+  
+      <div class="mb-4">
+        <input label="Firstname" placeholder="Firstname" formControlName="firstname" />
+      </div>
+  
+      <div class="mb-4">
+        <input label="Lastname" placeholder="Lastname" formControlName="lastname" />
+      </div>
+  
+      <div class="mb-4">
+        <input label="Email" placeholder="Email" formControlName="email" />
+      </div>
+  
+      <div class="mb-4">
+        <cf-text-control label="Phone Number" placeholder="Phone Number" formControlName="phoneNumber" />
+      </div>
+  
+      <div class="mb-4">
+        <input label="Date of Birth" placeholder="Date of Birth" formControlName="dob" />
+      </div>
+      <div class="mb-4">
+        <input label="Address" placeholder="Address" formControlName="address" />
+      </div>
+  
+      <h3 class="text-2xl font-bold mb-6">Educational Details</h3>
+      <div class="mb-4">
+        <input label="Matriculation" placeholder="Matriculation" formControlName="matriculation" />
+      </div>
+      <div class="mb-4">
+        <input label="College" placeholder="College" formControlName="college" />
+      </div>
+  
+      <h3 class="text-2xl font-bold mb-6">Professional Details</h3>
+      <div class="mb-4">
+        <input label="Job Title" placeholder="Job Title" formControlName="jobTitle" />
+      </div>
+      <div class="mb-4">
+        <input label="Company" placeholder="Company" formControlName="company" />
+      </div>
+      <div class="mb-4">
+        <input
+          label="Years of Experience" placeholder="Years of Experience"
+          formControlName="yearsOfExperience"
+        />
+      </div>
+  
+      <div class="mb-4">
+        <input label="Office Address" placeholder="Office Address" formControlName="officeAddress" />
+      </div>
+      <!-- {{form.value | json}} -->
+  
+      <!-- Submit Button -->
+      <button
+        class="bg-green-500 text-white px-12 py-4 rounded hover:bg-green-400 w-full"
+      >
+        Add Contact
+      </button>
+    </form>
+    <p class="mt-4 text-center">
+      Don't have an account?
+      <a href="./register.html" class="text-green-400 hover:underline"
+        >Register</a
+      >
+    </p>
+  </div>
+  
