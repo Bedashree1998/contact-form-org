@@ -1,0 +1,26 @@
+.example-form {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  h3 {
+    font-weight: bold;
+  }
+  
+  
+  .large-container {
+    background-color: lightblue;
+    height: 92%;
+    display: flex;
+    align-items: center;
+  }
+  
+  .individual-details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  mat-form-field {
+    width: 98%;
+  }

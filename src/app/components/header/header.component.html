@@ -1,8 +1,18 @@
-<nav class="navbar">
-    <div class="logo">Contact Form</div>
-    <ul class="nav-list">
-      <li><a href="#">Register</a></li>
-      <li><a href="#">Login</a></li>
-      <li><a href="#">Add Contact</a></li>
-    </ul>
-  </nav>
+
+
+  <div>
+ <h1>Contact Form</h1>
+    <a routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]= "{exact : true}">Home</a>
+<p>
+    <a routerLink="register" routerLinkActive="active-link">Register</a>
+</p>
+<p>
+    <a routerLink="login" routerLinkActive="active-link">Login</a>
+</p>
+    <p>
+        <a routerLink="add-contact" routerLinkActive="active-link">Add Contact</a>
+    </p>
+    <p>
+        <a routerLink="view-contact" routerLinkActive="active-link">View Contact</a>
+    </p>
+</div>

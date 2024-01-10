@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
 import { ContactFormService } from 'src/app/services/contact-form.service';
 
 @Component({
@@ -8,48 +9,54 @@ import { ContactFormService } from 'src/app/services/contact-form.service';
   styleUrls: ['./add-contact.component.scss']
 })
 export class AddContactComponent {
+  ContactFormInput: FormGroup;
+  formData: any;
 
-  constructor(private _fb: FormBuilder, private _contact: ContactFormService) {}
+  constructor(private fb: FormBuilder, private contactFormService: ContactFormService) {
+    this.ContactFormInput = this.fb.group({
+      firstName: ['', [Validators.required, Validators.minLength(3)]],
+      lastName: ['', [Validators.required, Validators.minLength(3)]],
+      email: ['', [Validators.required, Validators.email]],
+      dob: ["", [Validators.required]],
+      phoneNumber: ["",[Validators.required, Validators.minLength(10)]],
+      address: ["", [Validators.required]],
+      matriculation: ["", [Validators.required]],
+      college: ["", [Validators.required]],
+      jobTitle: ["", ],
+      company: ["", ],
+      yearsOfExperience: ["", ],
+      officeAddress: ["", ],
+      
+      
+    });
+  }
 
-  form!: FormGroup;
+  onSubmit() {
+    console.log(this.ContactFormInput.value);
+    this.formData = this.ContactFormInput.value;
+    console.log(this.formData);
+    this.contactFormService.addFormData(this.formData);
+  }
 
-  // POST /api/register
-  /*
-    {
-      "email":"string",
-      "firstName":"string",
-      "lastName":"string",
-      "dob":"",
-      "password":"string",
-      "favSingers":["abc", "def"]
+  dateClass: MatCalendarCellClassFunction<Date> = (cellDate, view) => {
+    // Only highligh dates inside the month view.
+    if (view === 'month') {
+      const date = cellDate.getDate();
+
+      // Highlight the 1st and 20th day of each month.
+      return date === 1 || date === 20 ? 'example-custom-date-class' : '';
     }
-  */
 
-    ngOnInit(): void {
-      this.initForm();
-    }
+    return '';
+  };
+}
+
+
+
   
-    initForm() {
-      this.form = this._fb.group({
-        email: ["", [Validators.required, Validators.email]],
-        firstname: ["", [Validators.required]],
-        lastname: ["", [Validators.required]],
-        dob: ["", [Validators.required]],
-        phoneNumber: ["",[Validators.required, Validators.minLength(10)]],
-        address: ["", [Validators.required]],
-        matriculation: ["", [Validators.required]],
-        college: ["", [Validators.required]],
-        jobTitle: ["", ],
-        company: ["", ],
-        yearsOfExperience: ["", ],
-        officeAddress: ["", ],
-        
-      });
-
-    
 
      
-}
-}
+
+
 
 

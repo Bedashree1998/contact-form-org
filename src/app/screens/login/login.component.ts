@@ -7,40 +7,26 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-    constructor(private _fb: FormBuilder) {}
-  
-    form!: FormGroup;
-  
-    // POST /api/register
-    /*
-      {
-        "email":"string",
-        "firstName":"string",
-        "lastName":"string",
-        "dob":"",
-        "password":"string",
-        "favSingers":["abc", "def"]
-      }
-    */
-  
-      ngOnInit(): void {
-        this.initForm();
-      }
+  LoginFormInput: FormGroup;
+  formData: any;
+
+  constructor(private fb: FormBuilder) {
+    this.LoginFormInput = this.fb.group({
+      firstName: ['', [Validators.required, Validators.minLength(3)]],
+      lastName: ['', [Validators.required, Validators.minLength(3)]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(8)]]
+    })
     
-      initForm() {
-        this.form = this._fb.group({
-          email: ["", [Validators.required, Validators.email]],
-          firstname: ["", [Validators.required]],
-          lastname: ["", [Validators.required]],
-          dob: ["", [Validators.required]],
-          password: [
-            "",
-            [Validators.required, Validators.minLength(8)],
-          ],
-          confirmPassword: ["", [Validators.required]]
-    });
-  
   
   }
+
+  onSubmit() {
+    console.log(this.LoginFormInput.value);
+    if (this.LoginFormInput.valid) {
+      console.log('Registration Form Data:', this.LoginFormInput.value);
+    }
   }
-  
+
+
+}

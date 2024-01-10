@@ -1,45 +1,30 @@
-<div class="bg-gray-800 text-white p-10 w-100 rounded-lg">
-    <h1 class="text-3xl font-bold mb-6">Register User</h1>
-    <form [formGroup]="form">
-      <!-- Email -->
-      <div class="mb-4">
-        <input label="Email" placeholder="Email" formControlName="email" />
-      </div>
-      
-      <div class="mb-4">
-        <input label="Firstname" placeholder="Firstname" formControlName="firstname" />
-      </div>
-  
-      <div class="mb-4">
-        <input label="Lastname" placeholder="Lastname" formControlName="lastname" />
-      </div>
-  
-      <div class="mb-4">
-        <input label="Date of Birth" placeholder="Date of Birth" formControlName="dob" />
-      </div>
-  
-      <div class="mb-4">
-        <input label="Password" placeholder="Password" formControlName="password" />
-      </div>
-  
-      <div class="mb-4">
-        <input
-          label="Confirm Password" placeholder="Confirm Password"
-          formControlName="confirmPassword"
-        />
-      </div>
-  
-      {{form.value | json}}
-  
-      <!-- Submit Button -->
-      <button
-        class="bg-green-500 text-white px-12 py-4 rounded hover:bg-green-400 w-full"
-      >
-        Register User
-      </button>
-    </form>
-    <p class="mt-4 text-center">
-      Already have an account?
-      <a routerLink="/user/login" class="text-green-400 hover:underline">Login</a>
-    </p>
-  </div>
+<div class="large-container">
+    <mat-card class="example-form">
+        <mat-card-content>
+<form [formGroup]="LoginFormInput" (ngSubmit)="onSubmit()" >
+<div class="container">
+    <div class="individual-details-container">
+    <h3>Login Form</h3>
+    </div>
+    <div class="individual-details">
+     
+    <mat-form-field appearance="fill">
+      <mat-label>First Name</mat-label>
+      <input matInput formControlName="firstName">
+      <mat-error *ngIf="LoginFormInput.get('lastName')?.errors?.['required']">
+        First Name is required.
+      </mat-error>
+      <mat-error *ngIf="LoginFormInput.get('firstName')?.errors?.['minlength']">
+        First Name must be at least 3 characters long.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="password" type="password">
+        <mat-error *ngIf="LoginFormInput.get('password')?.errors?.['required']">
+          Password is required.
+        </mat-error>
+        <mat-error *ngIf="LoginFormInput.get('password')?.errors?.['minlength']">
+          Password must be at least 8 characters.
+        </mat-error>
+      </mat-form-field>
