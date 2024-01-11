@@ -23,9 +23,11 @@ export class LoginComponent {
   onSubmit() {
     console.log(this.LoginFormInput.value);
     if (this.LoginFormInput.valid) {
+      this.router.navigate(['/']);
       console.log('Registration Form Data:', this.LoginFormInput.value);
+      
     }
-    this.router.navigate(['/']);
+  
   }
 
 

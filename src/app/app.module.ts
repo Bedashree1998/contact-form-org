@@ -17,6 +17,7 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { ViewContactComponent } from './screens/view-contact/view-contact.component';
+import {MatIconModule} from '@angular/material/icon';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { ViewContactComponent } from './screens/view-contact/view-contact.compon
     MatCardModule,
     MatNativeDateModule,
     MatDatepickerModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

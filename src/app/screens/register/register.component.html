@@ -72,9 +72,9 @@
                 formControlName="confirmPassword"
                 type="password"
               />
-              <mat-error *ngIf="RegisterFormInput.errors?.['notSame']">
+               <!-- <div  class="passwordError"*ngIf="notSame === 'true'">
                 Passwords must match.
-              </mat-error>
+               </div>  -->
             </mat-form-field>
             <div>
               <button mat-raised-button color="primary" type="submit">
