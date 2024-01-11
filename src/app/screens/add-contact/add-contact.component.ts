@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
+import { Router } from '@angular/router';
 import { ContactFormService } from 'src/app/services/contact-form.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class AddContactComponent {
   ContactFormInput: FormGroup;
   formData: any;
 
-  constructor(private fb: FormBuilder, private contactFormService: ContactFormService) {
+  constructor(private fb: FormBuilder, private contactFormService: ContactFormService, private router: Router) {
     this.ContactFormInput = this.fb.group({
       firstName: ['', [Validators.required, Validators.minLength(3)]],
       lastName: ['', [Validators.required, Validators.minLength(3)]],
@@ -36,6 +37,7 @@ export class AddContactComponent {
     this.formData = this.ContactFormInput.value;
     console.log(this.formData);
     this.contactFormService.addFormData(this.formData);
+    this.router.navigate(['/']);
   }
 
   dateClass: MatCalendarCellClassFunction<Date> = (cellDate, view) => {
@@ -49,6 +51,8 @@ export class AddContactComponent {
 
     return '';
   };
+
+  
 }
 
 

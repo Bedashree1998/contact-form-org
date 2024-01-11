@@ -1,4 +1,5 @@
-<!-- <div *ngIf="formDataList && formDataList.length > 0">
+<div class="large-container">
+<div *ngIf="formDataList && formDataList.length > 0">
     <div *ngFor="let formData of formDataList">
       <mat-card>
         <mat-card-content>
@@ -6,12 +7,12 @@
           <p><strong>Last Name:</strong> {{ formData.lastName }}</p>
           <p><strong>Email:</strong> {{ formData.email }}</p>
           <p><strong>Phone Number:</strong> {{ formData.phoneNumber }}</p>
-          <p><strong>Date of Birth:</strong> {{ formData.dob }}</p>
+          <p><strong>Date of Birth:</strong> {{ formData.dob | date: "yyyy-MM-dd" }}</p>
           <p><strong>Address:</strong> {{ formData.address }}</p>
         </mat-card-content>
       </mat-card>
       <br>
     </div>
-  </div> -->
-
+  </div>
+</div>
  

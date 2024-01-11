@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -10,7 +11,7 @@ export class RegisterComponent {
   RegisterFormInput: FormGroup;
   formData: any;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private router: Router) {
     this.RegisterFormInput = this.fb.group({
       firstName: ['', [Validators.required, Validators.minLength(3)]],
       lastName: ['', [Validators.required, Validators.minLength(3)]],
@@ -27,6 +28,7 @@ export class RegisterComponent {
       if (this.RegisterFormInput.valid) {
         console.log('Registration Form Data:', this.RegisterFormInput.value);
       }
+      this.router.navigate(['\login']);
     }
 
 
@@ -35,4 +37,5 @@ checkPasswords(group: FormGroup) {
     const confirmPassword = group.get('confirmPassword')?.value;
     return password === confirmPassword ? null : { notSame: true };
 }
+
 }
