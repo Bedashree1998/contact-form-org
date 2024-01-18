@@ -18,6 +18,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { ViewContactComponent } from './screens/view-contact/view-contact.component';
 import {MatIconModule} from '@angular/material/icon';
+import { MatTableModule} from '@angular/material/table'
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import {MatIconModule} from '@angular/material/icon';
     MatNativeDateModule,
     MatDatepickerModule,
     MatExpansionModule,
-    MatIconModule
+    MatIconModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

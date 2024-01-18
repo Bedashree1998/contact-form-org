@@ -1,121 +1,160 @@
 <div class="large-container">
-    <mat-card class="example-form">
-        <mat-card-content>
-<form [formGroup]="ContactFormInput" (ngSubmit)="onSubmit()" >
-<div class="container">
-  <!-- <div>
-<img  [src]="selectedImage" (click)="fileInput.click()">
-    <input type="file" #fileInput style="display: none;" (change)="onImageSelected($event)" accept="image/*">
-  </div> -->
-      <img class="fa fa-user-circle" style="font-size: 50px; cursor: pointer;max-width: 50px; max-height: 50px;" [src]="selectedImage" (click)="fileInput.click()">
-      <input type="file" #fileInput style="display: none;" (change)="onImageSelected($event)" accept="image/*" formControlName="imageUrl">
-   <div class="basic-details-container">
-    <h3>Basic Details</h3>
-    </div>
-    <div class="basic-details">
-     
-    <mat-form-field appearance="outline">
-      <mat-label>First Name</mat-label>
-      <input matInput formControlName="firstName">
-      <mat-error *ngIf="ContactFormInput.get('lastName')?.errors?.['required']">
-        First Name is required.
-      </mat-error>
-      <mat-error *ngIf="ContactFormInput.get('firstName')?.errors?.['minlength']">
-        First Name must be at least 3 characters long.
-      </mat-error>
-    </mat-form-field>
+  <mat-card>
+    <mat-card-content>
+      <form [formGroup]="ContactFormInput" (ngSubmit)="onSubmit()">
+          <img
+            class="fa fa-user-circle"
+            style="
+              font-size: 50px;
+              cursor: pointer;
+              max-width: 50px;
+              max-height: 50px;
+            "
+            [src]="selectedImage"
+            (click)="fileInput.click()"
+          />
+          <input
+            type="file"
+            #fileInput
+            style="display: none"
+            (change)="onImageSelected($event)"
+            accept="image/*"
+            formControlName="imageUrl"
+          />
+          <div class="basic-details-container">
+            <h3>Basic Details</h3>
+          </div>
+          <div class="basic-details">
+            <mat-form-field appearance="fill">
+              <mat-label>First Name</mat-label>
+              <input matInput formControlName="firstName" />
+              <mat-error
+                *ngIf="ContactFormInput.get('lastName')?.errors?.['required']"
+              >
+                First Name is required.
+              </mat-error>
+              <mat-error
+                *ngIf="ContactFormInput.get('firstName')?.errors?.['minlength']"
+              >
+                First Name must be at least 3 characters long.
+              </mat-error>
+            </mat-form-field>
 
-<mat-form-field>
-        <mat-label>Last Name</mat-label>
-        <input matInput formControlName="lastName">
-        <mat-error *ngIf="ContactFormInput.get('lastName')?.errors?.['required']">
-          Last Name is required.
-        </mat-error>
-        <mat-error *ngIf="ContactFormInput.get('lastName')?.errors?.['minlength']">
-          Last Name must be at least 3 characters long.
-        </mat-error>
-      </mat-form-field>
-    <mat-form-field appearance="outline">
-      <mat-label>Email</mat-label>
-      <input matInput formControlName="email" type="email">
-      <mat-error *ngIf="ContactFormInput.get('email')?.errors?.['required']">
-        Email is required.
-      </mat-error>
-      <mat-error *ngIf="ContactFormInput.get('email')?.errors?.['email']">
-        Please enter a valid email.
-      </mat-error>
-    </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Last Name</mat-label>
+              <input matInput formControlName="lastName" />
+              <mat-error
+                *ngIf="ContactFormInput.get('lastName')?.errors?.['required']"
+              >
+                Last Name is required.
+              </mat-error>
+              <mat-error
+                *ngIf="ContactFormInput.get('lastName')?.errors?.['minlength']"
+              >
+                Last Name must be at least 3 characters long.
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field  appearance="outline">
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="email" type="email" />
+              <!-- <mat-error
+                *ngIf="ContactFormInput.get('email')?.errors?.['required']"
+              >
+                Email is required.
+              </mat-error>
+              <mat-error
+                *ngIf="ContactFormInput.get('email')?.errors?.['email']"
+              >
+                Please enter a valid email.
+              </mat-error> -->
+            </mat-form-field>
 
-    <mat-form-field appearance="outline">
-        <mat-label>Phone number</mat-label>
-        <input matInput formControlName="phoneNumber">
-        <mat-error *ngIf="ContactFormInput.get('phoneNumber')?.errors?.['required']">
-          Phone Number is required.
-        </mat-error>
-        <mat-error *ngIf="ContactFormInput.get('phoneNumber')?.errors?.['minlength']">
-        Phone Number must be at least 10 characters long.
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field class="example-full-width" appearance="outline">
-        <mat-label>Date of Birth</mat-label>
-        <input matInput [matDatepicker]="picker" formControlName="dob">
-        <mat-hint>MM/DD/YYYY</mat-hint>
-        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker [dateClass]="dateClass" #picker></mat-datepicker>
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>Address</mat-label>
-        <input matInput formControlName="address">
-        <mat-error *ngIf="ContactFormInput.get('address')?.errors?.['required']">
-          Address is required.
-        </mat-error>
-      </mat-form-field>
-    </div>
-    <div class="educational-details-container">
-      <h3>Educational Details</h3>
-    </div>
-    <div class="educational-details">
-    <mat-form-field appearance="outline">
-      <mat-label>Matriculation</mat-label>
-      <input matInput formControlName="matriculation">
-      <mat-error *ngIf="ContactFormInput.get('matriculation')?.errors?.['required']">
-        Matriculation is required.
-      </mat-error>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-        <mat-label>College</mat-label>
-        <input matInput formControlName="college">
-        <mat-error *ngIf="ContactFormInput.get('college')?.errors?.['required']">
-          College is required.
-        </mat-error>
-        </mat-form-field>
-    </div>
-    <div class="professional-details-container">
-        <h3>Professional Details</h3>
-    </div>
-    <div class="professional-details">
-    <mat-form-field appearance="outline">
-      <mat-label>Job Title</mat-label>
-      <input matInput formControlName="jobTitle">
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-        <mat-label>Company</mat-label>
-        <input matInput formControlName="company">
-      </mat-form-field>
-    <mat-form-field appearance="outline">
-      <mat-label>Years of Experience</mat-label>
-      <input type= 'number' matInput formControlName="yearsOfExperience">
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-        <mat-label>Office Address</mat-label>
-        <input matInput formControlName="officeAddress">
-      </mat-form-field>
-    </div>
-      <button mat-raised-button color="primary" type="submit">Submit</button>
-    </div>
-
-     </form>
+            <mat-form-field>
+              <mat-label>Phone number</mat-label>
+              <input matInput formControlName="phoneNumber" />
+              <mat-error
+                *ngIf="ContactFormInput.get('phoneNumber')?.errors?.['required']"
+              >
+                Phone Number is required.
+              </mat-error>
+              <mat-error
+                *ngIf="ContactFormInput.get('phoneNumber')?.errors?.['minlength']"
+              >
+                Phone Number must be at least 10 characters long.
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field  appearance="fill">
+              <mat-label>Date of Birth</mat-label>
+              <input matInput [matDatepicker]="picker" formControlName="dob" />
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle
+                matIconSuffix
+                [for]="picker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker [dateClass]="dateClass" #picker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Address</mat-label>
+              <input matInput formControlName="address" />
+              <mat-error
+                *ngIf="ContactFormInput.get('address')?.errors?.['required']"
+              >
+                Address is required.
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="educational-details-container">
+            <h3>Educational Details</h3>
+          </div>
+          <div class="educational-details">
+            <mat-form-field appearance="fill">
+              <mat-label>Matriculation</mat-label>
+              <input matInput formControlName="matriculation" />
+              <mat-error
+                *ngIf="ContactFormInput.get('matriculation')?.errors?.['required']"
+              >
+                Matriculation is required.
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>College</mat-label>
+              <input matInput formControlName="college" />
+              <mat-error
+                *ngIf="ContactFormInput.get('college')?.errors?.['required']"
+              >
+                College is required.
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="professional-details-container">
+            <h3>Professional Details</h3>
+          </div>
+          <div class="professional-details">
+            <mat-form-field appearance="fill">
+              <mat-label>Job Title</mat-label>
+              <input matInput formControlName="jobTitle" />
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Company</mat-label>
+              <input matInput formControlName="company" />
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Years of Experience</mat-label>
+              <input
+                type="number"
+                matInput
+                formControlName="yearsOfExperience"
+              />
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Office Address</mat-label>
+              <input matInput formControlName="officeAddress" />
+            </mat-form-field>
+          </div>
+          <button mat-raised-button color="primary" type="submit">
+            Submit
+          </button>
+      </form>
     </mat-card-content>
-    </mat-card>
+  </mat-card>
 </div>
-  
